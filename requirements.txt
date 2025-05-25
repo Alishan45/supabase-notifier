@@ -3,3 +3,4 @@ APScheduler==3.10.4
 python-dotenv==1.0.1
 supabase==1.0.3
 typing-extensions==4.7.1
+gunicorn
