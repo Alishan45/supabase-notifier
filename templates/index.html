@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Supabase Notifier</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='./images/favicon.ico') }}" type="image/x-icon">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>📬 Supabase Daily Notifier</h1>
+        <div id="clock" class="clock"></div>
+      </header>
+
+      <div class="actions">
+        <button id="testEmailBtn" onclick="sendRealTestEmail()">📤 Send Test Email</button>
+        <button onclick="toggleTheme()">🌗 Toggle Theme</button>
+      </div>
+
+      <div class="preview" id="previewBox">
+        <h3>📧 Email Status</h3>
+        <p id="previewMessage">No test email sent yet.</p>
+      </div>
+
+      <div class="filters">
+        <div class="filter-group">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search by name, email or message..."
+          />
+        </div>
+        
+        <div class="filter-group">
+          <label for="startDate">From:</label>
+          <input type="date" id="startDate" />
+        </div>
+        
+        <div class="filter-group">
+          <label for="endDate">To:</label>
+          <input type="date" id="endDate" />
+        </div>
+        
+        <div class="filter-group">
+          <label for="sortBy">Sort by:</label>
+          <select id="sortBy">
+            <option value="submitted_at">Date</option>
+            <option value="name">Name</option>
+            <option value="email">Email</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <label for="sortOrder">Order:</label>
+          <select id="sortOrder">
+            <option value="desc">Newest First</option>
+            <option value="asc">Oldest First</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="contacts-box">
+  <h3>📇 Contact Submissions</h3>
+  <div class="contacts-header">
+    <span id="pageNumber">Page 1</span>
+  </div>
+  
+  <!-- Changed from ul to table -->
+  <table class="contacts-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+        <th>Timestamp</th>
+      </tr>
+    </thead>
+    <tbody id="contactList">
+      <!-- Table rows will be inserted here by JavaScript -->
+    </tbody>
+  </table>
+  
+  <div id="loader" class="loader" style="display: none;">
+    Loading more contacts...
+  </div>
+</div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
