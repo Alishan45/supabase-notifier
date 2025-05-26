@@ -237,7 +237,6 @@ input:focus, select:focus {
   text-overflow: ellipsis;
 }
 
-
 /* Responsive Table */
 @media (max-width: 768px) {
   .contacts-table {
